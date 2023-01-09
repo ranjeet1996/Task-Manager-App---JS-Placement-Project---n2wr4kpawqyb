@@ -1,21 +1,3 @@
-// 
-// const form = document.querySelector("#new-task-form");
-// const input = document.querySelector("#new-task-input");
-// const list = document.querySelector("#tasks");
-// const add = document.querySelector("#new-task-submit");
-
-// function addTask(e){
-//     e.preventDefault();
-//     const dom=document.createElement("p");
-//     dom.innerText=input.value;
-//     document.querySelector(".open-item").appendChild(dom);
-//     input.value='';
-// }
-
-
-// add.addEventListener("click", addTask);
-
-
 let btn = document.querySelector("#addtask");
 let inp = document.querySelector("#input");
 let boxes = document.querySelectorAll(".scroll");
@@ -25,7 +7,7 @@ let drag = null;
 btn.onclick = function () {
   if (inp.value != "") {
     const newTask = document.createElement("div");
-    newTask.classList.add("TaskWrapper", "item")
+    newTask.classList.add("TaskWrapper", "item");
     newTask.setAttribute("draggable", "true");
     const pin = document.createElement("div");
     pin.classList.add("pin");
@@ -52,7 +34,7 @@ btn.onclick = function () {
     newTask.appendChild(paraDiv);
     paraDiv.appendChild(para);
     newTask.appendChild(circle);
-    inp.value = '';
+    inp.value = "";
     boxes[0].appendChild(newTask);
     newTask.addEventListener("click", () => {
       document.getElementById("popup-1").classList.toggle("active");
@@ -62,43 +44,37 @@ btn.onclick = function () {
   }
 
   dragItem();
-}
+};
 
 function dragItem() {
-  let items = document.querySelectorAll('.item');
+  let items = document.querySelectorAll(".item");
 
-  items.forEach(item => {
-    item.addEventListener('dragstart', function () {
+  items.forEach((item) => {
+    item.addEventListener("dragstart", function () {
       drag = item;
-      item.style.opacity = '0.5';
-    })
-    item.addEventListener('dragend', function () {
-      rag = null;
-      item.style.opacity = '1';
-    })
-    boxes.forEach(box => {
-      box.addEventListener('dragover', function (e) {
+      item.style.opacity = "0.5";
+    });
+    item.addEventListener("dragend", function () {
+      drag = null;
+      item.style.opacity = "1";
+    });
+    boxes.forEach((box) => {
+      box.addEventListener("dragover", function (e) {
         e.preventDefault();
-
-      })
-      box.addEventListener('dragleave', function () {
-
-      })
-      box.addEventListener('drop', function () {
+      });
+      box.addEventListener("dragleave", function () {});
+      box.addEventListener("drop", function () {
         box.append(drag);
-
-      })
-    })
-  })
+      });
+    });
+  });
 }
 const togglePopup = () => {
   document.getElementById("popup-1").classList.toggle("active");
-}
+};
 
 function save() {
   currTasksDesc.innerHTML = description.value;
   description.value = "";
   togglePopup();
 }
-
-
