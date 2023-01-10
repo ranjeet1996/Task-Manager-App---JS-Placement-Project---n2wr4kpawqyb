@@ -1,7 +1,7 @@
-let btn = document.querySelector("#addtask");
-let inp = document.querySelector("#input");
-let boxes = document.querySelectorAll(".scroll");
-let description = document.getElementById("description");
+const btn = document.querySelector("#addtask");
+const inp = document.querySelector("#input");
+const boxes = document.querySelectorAll(".scroll");
+const description = document.getElementById("description");
 let currTasksDesc;
 let drag = null;
 btn.onclick = function () {
@@ -13,7 +13,7 @@ btn.onclick = function () {
     pin.classList.add("pin");
 
     const task = document.createElement("div");
-    task.innerHTML = inp.value;
+    task.innerText = inp.value;
     task.classList.add("task");
 
     const paraDiv = document.createElement("div");
@@ -47,7 +47,7 @@ btn.onclick = function () {
 };
 
 function dragItem() {
-  let items = document.querySelectorAll(".item");
+  const items = document.querySelectorAll(".item");
 
   items.forEach((item) => {
     item.addEventListener("dragstart", function () {
